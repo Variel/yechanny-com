@@ -8,6 +8,7 @@
   "starter-name": "gatsby-starter-minimal-blog",
   "scripts": {
     "build": "gatsby build",
+    "build-blog": "node download-notion.js NOTION_API_KEY NOTION_DATABASE_ID NOTION_OUTPUT_DIR && gatsby build",
     "develop": "gatsby develop",
     "develop:cypress": "cross-env CYPRESS_SUPPORT=y yarn develop",
     "build:cypress": "cross-env CYPRESS_SUPPORT=y yarn build",
@@ -22,6 +23,7 @@
     "gatsby-plugin-manifest": "^5.2.0",
     "gatsby-plugin-sitemap": "^6.2.0",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.30",
+    "or-pipets": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
