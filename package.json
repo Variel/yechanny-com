@@ -8,7 +8,7 @@
   "starter-name": "gatsby-starter-minimal-blog",
   "scripts": {
     "build": "gatsby build",
-    "build-blog": "node download-notion.js NOTION_API_KEY NOTION_DATABASE_ID NOTION_OUTPUT_DIR && gatsby build",
+    "build-blog": "node download-notion.js && gatsby build",
     "develop": "gatsby develop",
     "develop:cypress": "cross-env CYPRESS_SUPPORT=y yarn develop",
     "build:cypress": "cross-env CYPRESS_SUPPORT=y yarn build",

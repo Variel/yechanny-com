@@ -1,0 +1,59 @@
+name: deploy to cloudflare pages
+
+on:
+  workflow_call:
+    inputs:
+      build-artifact-name:
+        required: true
+        type: string
+        default: blog-build
+      branch:
+        required: false
+        type: string
+        default: main
+      projectName:
+        required: true
+        type: string
+    secrets:
+      CLOUDFLARE_API_TOKEN:
+        required: true
+    outputs:
+      url:
+        description: "Deployed application url (by commit)"
+        value: ${{ jobs.deploy-to-cloudflare-pages.outputs.url }}
+      id:
+        description: "Deployed application id (by commit)"
+        value: ${{ jobs.deploy-to-cloudflare-pages.outputs.id }}
+
+
+jobs:
+  deploy-to-cloudflare-pages:
+    runs-on: ubuntu-latest
+    outputs:
+      url: ${{ steps.deploy-to-cloudflare-pages.outputs.url }}
+      id: ${{ steps.deploy-to-cloudflare-pages.outputs.id }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ inputs.build-artifact-name }}
+          path: dist
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Deploy cloudFlare pages
+        uses: cloudflare/pages-action@1
+        id: deploy-to-cloudflare-pages
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 68cee62b3ea304dbae18339d0f4fe11e
+          projectName: ${{ inputs.projectName }}
+          branch: ${{ inputs.branch }}
+          directory: dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

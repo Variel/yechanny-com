@@ -5,9 +5,9 @@ const fs = require("fs-extra")
 const { Readable } = require('stream');
 
 const config = {
-  token: process.argv[2],
-  databaseId: process.argv[3],
-  outputDir: process.argv[4],
+  token: process.argv[2] || process.env.NOTION_API_KEY,
+  databaseId: process.argv[3] || process.env.NOTION_DATABASE_ID,
+  outputDir: process.argv[4] || process.env.NOTION_OUTPUT_DIR,
 }
 
 //#region Notion APIs

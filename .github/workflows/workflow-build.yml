@@ -1,0 +1,44 @@
+name: Build Project
+
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        required: true
+        type: string
+        default: blog-build
+
+      build_env:
+        required: false
+        type: string
+        default: production
+
+      app_env:
+        required: false
+        type: string
+        default: production
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Build
+        run: npm run-script build-blog
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_DATABASE_ID: 9236104ff94746efada704f4ab00d071
+          NOTION_OUTPUT_DIR: ./content/posts/generated
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.artifact-name }}
+          path: public
+          retention-days: 1
