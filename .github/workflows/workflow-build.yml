@@ -17,6 +17,10 @@ on:
         required: false
         type: string
         default: production
+    secrets:
+      NOTION_API_KEY:
+        required: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
