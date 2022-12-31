@@ -528,7 +528,7 @@ getPages().then((pages) => {
 
       await fs.writeFile(path.join(destDir, "index.mdx"), markdown, "utf8");
       
-      console.log(`- ${path.join(destDir, "index.mdx")}`);
+      console.log(` - ${path.join(destDir, "index.mdx")}`);
     } catch (e) {
       console.error(e);
     }
