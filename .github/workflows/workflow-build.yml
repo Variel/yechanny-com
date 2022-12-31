@@ -29,6 +29,10 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install Packages
+        run: npm install
+        shell: bash
+
       - name: Build
         run: npm run-script build-blog
         env:
