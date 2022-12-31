@@ -25,6 +25,8 @@ jobs:
       build_env: production
       app_env: production
       artifact-name: blog-build
+    secrets:
+      NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
 
   deploy-to-cloudflare-pages:
     needs: build
