@@ -1,6 +1,6 @@
 "use strict"
 
-const YAML = require("YAML")
+const YAML = require("yaml")
 const fs = require("fs-extra")
 const { Readable } = require('stream');
 
