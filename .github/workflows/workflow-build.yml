@@ -20,6 +20,8 @@ on:
     secrets:
       NOTION_API_KEY:
         required: true
+      BUILD_WEBHOOK_TOKEN:
+        required: true
 
 jobs:
   build:
@@ -43,6 +45,7 @@ jobs:
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           NOTION_DATABASE_ID: 9236104ff94746efada704f4ab00d071
           NOTION_OUTPUT_DIR: ./content/posts/generated
+          GATSBY_GITHUB_BUILD_TOKEN: ${{ secrets.BUILD_WEBHOOK_TOKEN }}
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v3

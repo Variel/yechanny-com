@@ -5,6 +5,9 @@ on:
     secrets:
       CLOUDFLARE_API_TOKEN:
         required: true
+  push:
+    branches:
+      - main
 
 jobs:
   setup:
@@ -27,6 +30,7 @@ jobs:
       artifact-name: blog-build
     secrets:
       NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+      BUILD_WEBHOOK_TOKEN: ${{ secrets.BUILD_WEBHOOK_TOKEN }}
 
   deploy-to-cloudflare-pages:
     needs: build
