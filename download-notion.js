@@ -393,7 +393,15 @@ const blockToMarkdown = (block, lowerTitleLevel) => {
 
   // Embed
   if (block.type == "embed") {
-    return [EOL_MD, block.embed.url, EOL_MD].join("");
+    const twitterEmbedRegex = /^https\:\/\/twitter\.com\/(.+?)\/status\/(?<id>\d+)[\?,$]?/;
+    const match = twitterEmbedRegex.exec(block.embed.url);
+    if (!match) return [EOL_MD, block.embed.url, EOL_MD].join("");
+
+    return [
+      EOL_MD,
+      `<TwitterTweetEmbed tweetId="${match.groups["id"]}" />`,
+      EOL_MD,
+    ].join("");
   }
 
   // Quote

@@ -28,6 +28,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "react-twitter-embed": "^4.0.4",
     "yaml": "^1.10.2"
   },
   "devDependencies": {
