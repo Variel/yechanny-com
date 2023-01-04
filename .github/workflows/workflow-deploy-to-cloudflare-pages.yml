@@ -17,6 +17,8 @@ on:
     secrets:
       CLOUDFLARE_API_TOKEN:
         required: true
+      PUSH_KEY:
+        required: false
     outputs:
       url:
         description: "Deployed application url (by commit)"
@@ -57,3 +59,6 @@ jobs:
           branch: ${{ inputs.branch }}
           directory: dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Send finished push
+        run: curl --data "key=${{ secrets.PUSH_KEY }}&title=Yechanny%20Blog&msg=%EB%B8%94%EB%A1%9C%EA%B7%B8+%EC%BD%98%ED%85%90%EC%B8%A0%EA%B0%80+%EA%B2%8C%EC%8B%9C%EB%90%98%EC%97%88%EC%8A%B5%EB%8B%88%EB%8B%A4&event=Publish" --url https://api.simplepush.io/send
