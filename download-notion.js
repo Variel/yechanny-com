@@ -7,9 +7,9 @@ const { Readable } = require("stream");
 console.log("[Download Notion]");
 
 const config = {
-  token: process.env.NOTION_API_KEY,
-  databaseId: process.env.NOTION_DATABASE_ID,
-  outputDir: process.env.NOTION_OUTPUT_DIR,
+  token: process.env.NOTION_API_KEY ?? process.argv[2],
+  databaseId: process.env.NOTION_DATABASE_ID ?? process.argv[3],
+  outputDir: process.env.NOTION_OUTPUT_DIR ?? process.argv[4],
 };
 
 console.log(`config:`);
