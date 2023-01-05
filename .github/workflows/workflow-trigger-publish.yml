@@ -13,6 +13,9 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
+      - name: Send started push
+        run: curl -d "블로그 빌드가 시작되었습니다 ⚙️" ntfy.sh/yechanny-com
+
       - name: Checkout Repository
         uses: actions/checkout@v3
 
