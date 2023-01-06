@@ -20,6 +20,25 @@ const theme = merge(parentTheme, {
     p: {
       fontSize: [2, 2, 2, 3],
     },
+    h1: {
+      fontSize: [5, 6, 6, 7],
+      mt: 5,
+    },
+    h2: {
+      fontSize: [4, 5, 5, 6],
+      mt: 5,
+    },
+    h3: {
+      fontSize: [3, 4, 4, 5],
+      mt: 4,
+    },
+    h4: {
+      fontSize: [2, 3, 3, 4],
+      mt: 3,
+    },
+    hr: {
+      my: 4
+    }
   },
   layout: {
     container: {
